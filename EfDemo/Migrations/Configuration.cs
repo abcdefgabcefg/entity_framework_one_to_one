@@ -37,12 +37,10 @@
                 new TableWithForeignKey1
                 {
                     Id = 1,
-                    TableWithPrincipalKeyId = 1
                 },
                 new TableWithForeignKey1
                 {
                     Id = 2,
-                    TableWithPrincipalKeyId = 2
                 }
             };
 
@@ -51,12 +49,10 @@
                 new TableWithForeignKey2
                 {
                     Id = 1,
-                    TableWithPrincipalKeyId = 1
                 },
                 new TableWithForeignKey2
                 {
-                    Id = 2,
-                    TableWithPrincipalKeyId = 3
+                    Id = 3,
                 }
             };
 

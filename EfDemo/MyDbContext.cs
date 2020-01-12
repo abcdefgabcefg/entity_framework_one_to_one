@@ -11,21 +11,9 @@ namespace EfDemo
 
         public DbSet<TableWithForeignKey2> TableWithForeignKey2 { get; set; }
 
-        public MyDbContext() : base("Server=.;Database=MyDatabase;Integrated Security=True;") { }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public MyDbContext() : base("Server=.;Database=MyDatabase;Integrated Security=True;") 
         {
-            modelBuilder
-                .Entity<TableWithForeignKey1>()
-                .HasRequired(tableWithForeignKey1 => tableWithForeignKey1.TableWithPrincipalKey)
-                .WithRequiredDependent(tableWithPrincipalKey => tableWithPrincipalKey.TableWithForeignKey1);
-
-            modelBuilder
-                .Entity<TableWithForeignKey2>()
-                .HasRequired(tableWithForeignKey1 => tableWithForeignKey1.TableWithPrincipalKey)
-                .WithRequiredDependent(tableWithPrincipalKey => tableWithPrincipalKey.TableWithForeignKey2);
-
-            base.OnModelCreating(modelBuilder);
+            //Database.Log = Console.WriteLine;
         }
     }
 }

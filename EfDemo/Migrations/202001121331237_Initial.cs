@@ -12,11 +12,10 @@
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        TableWithPrincipalKeyId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.TableWithPrincipalKey", t => t.TableWithPrincipalKeyId)
-                .Index(t => t.TableWithPrincipalKeyId, unique: true);
+                .ForeignKey("dbo.TableWithPrincipalKey", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.TableWithPrincipalKey",
@@ -31,11 +30,10 @@
                 c => new
                     {
                         Id = c.Int(nullable: false),
-                        TableWithPrincipalKeyId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.TableWithPrincipalKey", t => t.TableWithPrincipalKeyId)
-                .Index(t => t.TableWithPrincipalKeyId, unique: true);
+                .ForeignKey("dbo.TableWithPrincipalKey", t => t.Id)
+                .Index(t => t.Id);
             
         }
         
@@ -43,8 +41,8 @@
         {
             DropForeignKey("dbo.TableWithForeignKey1", "Id", "dbo.TableWithPrincipalKey");
             DropForeignKey("dbo.TableWithForeignKey2", "Id", "dbo.TableWithPrincipalKey");
-            DropIndex("dbo.TableWithForeignKey2", new[] { "TableWithPrincipalKeyId" });
-            DropIndex("dbo.TableWithForeignKey1", new[] { "TableWithPrincipalKeyId" });
+            DropIndex("dbo.TableWithForeignKey2", new[] { "Id" });
+            DropIndex("dbo.TableWithForeignKey1", new[] { "Id" });
             DropTable("dbo.TableWithForeignKey2");
             DropTable("dbo.TableWithPrincipalKey");
             DropTable("dbo.TableWithForeignKey1");
