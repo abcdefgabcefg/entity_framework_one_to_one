@@ -56,9 +56,9 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202001120936472_Initial.cs" />
-    <Compile Include="Migrations\202001120936472_Initial.designer.cs">
-      <DependentUpon>202001120936472_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202001121113124_Initial.cs" />
+    <Compile Include="Migrations\202001121113124_Initial.designer.cs">
+      <DependentUpon>202001121113124_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TableWithForeignKey1.cs" />
@@ -72,8 +72,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202001120936472_Initial.resx">
-      <DependentUpon>202001120936472_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202001121113124_Initial.resx">
+      <DependentUpon>202001121113124_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,23 +1,80 @@
 ﻿namespace EfDemo.Migrations
 {
-    using System;
-    using System.Data.Entity;
+    using EfDemo.Models;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EfDemo.MyDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<MyDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(EfDemo.MyDbContext context)
+        protected override void Seed(MyDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            var tableWithPrincipalKeyEntities = new[] 
+            {
+                new TableWithPrincipalKey
+                {
+                    Id = 1,
+                },
+                new TableWithPrincipalKey
+                {
+                    Id = 2
+                },
+                new TableWithPrincipalKey
+                {
+                    Id = 3
+                },
+                new TableWithPrincipalKey
+                {
+                    Id = 4
+                }
+            };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            var tableWithForeignKey1Entities = new[]
+            {
+                new TableWithForeignKey1
+                {
+                    Id = 1,
+                    TableWithPrincipalKeyId = 1
+                },
+                new TableWithForeignKey1
+                {
+                    Id = 2,
+                    TableWithPrincipalKeyId = 2
+                }
+            };
+
+            var tableWithForeignKey2Entities = new[]
+            {
+                new TableWithForeignKey2
+                {
+                    Id = 1,
+                    TableWithPrincipalKeyId = 1
+                },
+                new TableWithForeignKey2
+                {
+                    Id = 2,
+                    TableWithPrincipalKeyId = 3
+                }
+            };
+
+            context
+                .Set<TableWithPrincipalKey>()
+                .AddOrUpdate(tableWithPrincipalKeyEntities);
+
+            context.SaveChanges();
+
+            context
+                .Set<TableWithForeignKey1>()
+                .AddOrUpdate(tableWithForeignKey1Entities);
+
+            context
+                .Set<TableWithForeignKey2>()
+                .AddOrUpdate(tableWithForeignKey2Entities);
+
+            context.SaveChanges();
         }
     }
 }
